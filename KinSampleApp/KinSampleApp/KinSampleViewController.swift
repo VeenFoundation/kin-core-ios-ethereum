@@ -89,15 +89,36 @@ extension KinSampleViewController: KinClientCellDelegate {
         }
 
         getKinCell.getKinButton.isEnabled = false
-
-        let urlString = "http://kin-faucet.rounds.video/send?public_address=\(kinAccount.publicAddress)"
+        let params = ["public_address" : "0x00000111111", "data": "0x0" ] as Dictionary<String, String>
+        
+        var request = URLRequest(url : URL(string : "http://127.0.0.1:5000/request")!)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        request.addValue("application/json", forHTTPHeaderField : "Content-Type")
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request, completionHandler : { data, response, error -> Void in
+       
+            do {
+                
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                
+            } catch{
+                print("error")
+            }
+            
+        })
+        getKinCell.getKinButton.isEnabled = true
+        task.resume()
+        
+        /*
         URLSession.shared.dataTask(with: URL(string: urlString)!) { [weak self] _, _, error in
             DispatchQueue.main.async {
                 guard let aSelf = self else {
                     return
                 }
 
-                getKinCell.getKinButton.isEnabled = true
+         
                 
                 if let error = error {
                     print("Not able to get test Kin. \(error)")
@@ -109,5 +130,6 @@ extension KinSampleViewController: KinClientCellDelegate {
                 }
             }
         }.resume()
+         */
     }
 }

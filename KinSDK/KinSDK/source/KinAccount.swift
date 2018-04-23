@@ -173,7 +173,8 @@ final class KinEthereumAccount: KinAccount {
         guard
             let wei = Decimal(kin).kinToWei().toBigInt(),
             let options = GethTransactOpts(),
-            let price = try? store.client.suggestGasPrice(store.context),
+            //let price = 0,
+            //let price = try? store.client.suggestGasPrice(store.context),
             let toAddress = GethNewInterface(),
             let value = GethNewInterface() else {
                 throw KinError.internalInconsistency
@@ -186,9 +187,10 @@ final class KinEthereumAccount: KinAccount {
         }
 
         let nonce: UnsafeMutablePointer<Int64> = UnsafeMutablePointer<Int64>.allocate(capacity: 1)
-        defer {
-            _ = UnsafeMutablePointer<Int64>.deallocate(nonce)
-        }
+        //defer {
+        //    _ = UnsafeMutablePointer<Int64>.deallocate(nonce)
+        //}
+        let price = GethBigInt(1)
 
         try store.client.getPendingNonce(at: store.context, account: gethAccount.getAddress(), nonce: nonce)
 

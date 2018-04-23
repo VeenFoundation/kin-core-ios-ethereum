@@ -37,7 +37,7 @@ extension NetworkId {
     func asInteger() -> UInt64 {
         switch self {
         case .mainNet:
-            return 1
+            return 1991
         case .ropsten:
             return 3
         case .truffle:
