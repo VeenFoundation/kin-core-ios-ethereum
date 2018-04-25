@@ -89,7 +89,7 @@ extension KinSampleViewController: KinClientCellDelegate {
         }
 
         getKinCell.getKinButton.isEnabled = false
-        let params = ["public_address" : "0x00000111111", "data": "0x0" ] as Dictionary<String, String>
+        let params = ["public_address" :kinAccount.publicAddress, "data": "0x0" ] as Dictionary<String, String>
         
         var request = URLRequest(url : URL(string : "http://127.0.0.1:5000/request")!)
         request.httpMethod = "POST"

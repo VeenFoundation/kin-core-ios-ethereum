@@ -45,9 +45,9 @@ class HomeViewController: UIViewController {
 
         let provider: Provider
         if production {
-            provider = Provider(url: URL(string: "http://ethkdgvgp6zp.eastus.cloudapp.azure.com:8545")!, networkId: .mainNet)
+            provider = Provider(url: URL(string: "http://veenv3-dns-reg1.eastus.cloudapp.azure.com:8545")!, networkId: .mainNet)
         } else {
-            provider = Provider(url: URL(string: "http://parity.rounds.video:8545")!, networkId: .ropsten)
+            provider = Provider(url: URL(string: "http://veenv3-dns-reg1.eastus.cloudapp.azure.com:8545")!, networkId: .ropsten)
         }
         
         guard let kinClient = try? KinClient(provider: provider) else {

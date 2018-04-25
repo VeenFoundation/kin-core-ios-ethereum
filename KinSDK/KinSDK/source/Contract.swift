@@ -30,9 +30,9 @@ final class Contract {
 
         switch networkId {
         case .mainNet:
-            address = "0x8be6c2da78ec277e72ff3dd059cb639e954afdd6"
+            address = "0x5f99b6d8535341db3c6cce39ba14b08b3dc691e5"
         case .ropsten:
-            address = "0x8be6c2da78ec277e72ff3dd059cb639e954afdd6"
+            address = "0x5f99b6d8535341db3c6cce39ba14b08b3dc691e5"
         case .truffle:
             guard
                 let fileUrl = Bundle.main.url(forResource: "testConfig", withExtension: "plist"),
